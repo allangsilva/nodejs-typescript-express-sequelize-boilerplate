@@ -1,0 +1,7 @@
+Dockerfile
+kubernetes*
+*.md
+Jenkinsfile
+.dockerignore
+.cop
+.git*

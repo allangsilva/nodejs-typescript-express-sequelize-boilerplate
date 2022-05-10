@@ -1,0 +1,65 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
+    "no-console": "warn",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "overrides": [
+      {
+        "files": ["*.ts"],
+        "rules": {
+          // Here it worked
+          "@typescript-eslint/dot-notation": "error",
+          "no-shadow": "off"
+        },
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "max-len": [
+          "warn",
+          {
+            "code": 120
+          }
+        ],
+        "implicit-arrow-linebreak": "off",
+        "comma-dangle": "off",
+        "object-curly-newline": "off",
+        "linebreak-style": 0,
+        "prettier/prettier": "error",
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            "ts": "never"
+          }
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    },
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}

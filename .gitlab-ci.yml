@@ -1,0 +1,24 @@
+image: node:16-alpine
+
+stages:
+  - test
+  - sonar
+
+test:
+  stage: test
+  script:
+    - yarn install
+    - yarn test:coverage
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  artifacts:
+    paths:
+      - coverage/
+    expire_in: 60 minutes
+
+sonar:
+  image: sonarsource/sonar-scanner-cli
+  stage: sonar
+  only:
+    - tags
+  script:
+    - sonar-scanner
